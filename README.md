@@ -97,34 +97,7 @@ output {
 }
 ```
 
-### 3. Installation d'ElasticSearch :
-
-- On crée un fichier `docker-compose.yml` qui contient les informations suivantes :
-
-```yml
-version: '3.1'
-
-services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.1
-    container_name: elasticsearch
-    environment:
-      - discovery.type=single-node
-    ports:
-      - "9200:9200"
-    volumes:
-      - ./elasticsearch:/usr/share/elasticsearch/data
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.11.1
-    container_name: kibana
-    ports:
-      - "5601:5601"
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-```
-
-### 4. Configuration de pipeline de données :
+### 3. Configuration de pipeline de données :
 
 - On exécute la commande suivante pour lancer notre pipeline de données :
 
@@ -132,7 +105,7 @@ services:
 docker run -it --rm --name logstash -v "$PWD":/config-dir logstash -f /config-dir/logstash.conf
 ```
 
-### 5. Validation :
+### 4. Validation :
 
 - On exécute la commande suivante pour lancer notre SGBDR :
 
